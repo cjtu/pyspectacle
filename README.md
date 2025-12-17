@@ -1,18 +1,44 @@
 # pyspectacle
 
-A Python package for parsing and browsing spectroscopy databases.
+A Python package for parsing and browsing spectroscopy databases. 
 
 ![Interactive tool image](./tool_v0_plot.png)
 
+Note: this is an early prototype and may break or be unsupported! Currently only supports the RELAB database.
+
+### Quickstart
+
+1. Download the RELAB database from https://sites.brown.edu/relab/relab-spectral-database/
+2. Unzip the database
+3. Install `pyspectacle` (see below)
+4. Launch the interactive browser in Jupyter and run the following (update path accordingly):
+
+```python
+from pyspectacle import RelabParser, SpectraBrowser
+database_path = '/path/to/unzipped/RelabDB/'
+parser = RelabParser(database_path)
+browser = SpectraBrowser(parser)
+browser.display()
+```
+
 ## Installation
 
-### With UV
+### With UV (recommended)
 
 Install directly from GitHub, this will setup all dependencies. You just need uv [link](https://docs.astral.sh/uv/#installation):
 
 ```bash
 uv pip install git+https://github.com/cjtu/pyspectacle.git
 ```
+
+### Simplest (pip)
+
+Install directly from GitHub. Recommended to install in a conda env or (uv) venv as above.
+
+```bash
+pip install git+https://github.com/cjtu/pyspectacle.git
+```
+
 
 ### Clone from GitHub (dev setup)
 
@@ -24,43 +50,14 @@ cd pyspectacle
 uv pip install -e .
 ```
 
-### Dependencies
+### Troubleshooting
 
-Install required dependencies with uv if you cloned the repo:
-
-```bash
-uv sync
-```
-
-Manually with pip/conda:
-
-```bash
-conda install numpy pandas scipy matplotlib ipywidgets jupyter
-```
-
-For interactive Jupyter widgets, you may also need:
+For interactive Jupyter widgets, you may also need to run:
 
 ```bash
 jupyter nbextension enable --py widgetsnbextension
 ```
 
-## Quick Start
-
-### Interactive Browser
-
-1. Download the RELAB database from https://sites.brown.edu/relab/relab-spectral-database/
-2. Unzip the database
-3. Launch the interactive browser in :
-
-```python
-from pyspectacle import RelabParser, SpectraBrowser
-
-parser = RelabParser('/path/to/RelabDB/')
-browser = SpectraBrowser(parser)
-browser.display()
-```
-
-See [examples/interactive_browser.ipynb](examples/interactive_browser.ipynb) for a complete example.
 
 ### Programmatic API
 
