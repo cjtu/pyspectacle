@@ -9,9 +9,10 @@ Note: this is an early prototype and may break or be unsupported! Currently only
 ### Quickstart
 
 1. Download the RELAB database from https://sites.brown.edu/relab/relab-spectral-database/
+    - Go to Download Catalogues -> download the full zipped DB (e.g. RelabDatabase2024Dec31.zip)
 2. Unzip the database
 3. Install `pyspectacle` (see below)
-4. Launch the interactive browser in Jupyter and run the following (update path accordingly):
+4. In a Jupyter notebook, run (update path accordingly):
 
 ```python
 from pyspectacle import RelabParser, SpectraBrowser
@@ -23,36 +24,27 @@ browser.display()
 
 ## Installation
 
-### With UV (recommended)
+### Quick (pip)
 
-Install directly from GitHub, this will setup all dependencies. You just need uv [link](https://docs.astral.sh/uv/#installation):
-
-```bash
-uv pip install git+https://github.com/cjtu/pyspectacle.git
-```
-
-### Simplest (pip)
-
-Install directly from GitHub. Recommended to install in a conda env or (uv) venv as above.
+Install directly from GitHub. Recommended to install in a conda env or (uv / venv) virtual environment.
 
 ```bash
 pip install git+https://github.com/cjtu/pyspectacle.git
 ```
 
-
 ### Clone from GitHub (dev setup)
 
-Alternatively you can clone the repo and install with uv:
+Clone the repo and install with [uv](https://docs.astral.sh/uv/#installation):
 
 ```bash
 git clone https://github.com/cjtu/pyspectacle.git
 cd pyspectacle
-uv pip install -e .
+uv sync
 ```
 
 ### Troubleshooting
 
-For interactive Jupyter widgets, you may also need to run:
+You may also need to run the following to setup interactive widgets in Jupyter:
 
 ```bash
 jupyter nbextension enable --py widgetsnbextension
@@ -85,9 +77,7 @@ See [examples/api_example.ipynb](examples/api_example.ipynb) for more examples.
 ## Features
 
 - **Interactive GUI**: Filter, select, plot, and export spectra with an intuitive widget interface
-- **Flexible Queries**: Filter by Source, SubType, Origin, PI, and more
-- **Batch Processing**: Retrieve multiple spectra with automatic wavelength interpolation
-- **Metadata Management**: Join sample and spectra catalogues for comprehensive metadata
+- **Batch Processing**: Retrieve multiple spectra with automatic wavelength interpolation as a unified pandas DataFrame
 - **Data Export**: Export reflectance, standard deviation, and metadata to CSV
 - **Visualization**: Plot spectra with normalization, error bars, and offset options
 
